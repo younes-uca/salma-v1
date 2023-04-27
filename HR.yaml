@@ -1,0 +1,115 @@
+#---------------- Employe -----------------
+Employe_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion employe):
+  id: Long ID
+  login: String
+  password: String REF_REQUIERED
+  prenom: String
+  nom: String
+  dateDeNaissance: LocalDateTime
+  lieuDeNaissance: String
+  adresse: String
+  sexe: Sexe
+  cin: String
+  parcoursUniversitaire: ParcoursUniversitaire
+  tel: String
+  dateEmbauche: LocalDateTime
+  matricule: Integer
+  adressEmail: String
+  compteBancaire: String
+  departement: Departement
+  poste: Poste
+  notation: Notation
+  nombreAbsence: Integer
+  conges: Conges
+  echelle: Echelle
+  echelon: Echelon
+  grade: Grade
+  local: Local
+
+
+Sexe_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion promotion):
+  id: Long ID
+  reference: String REF_REQUIERED
+  libelle: String LABEL_REQUIERED
+
+Echelle_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion promotion):
+  id: Long ID
+  reference: String REF_REQUIERED
+  dateActivation: LocalDateTime
+  echelle: Echelle
+
+Echelon_MS(ms1)_ROLES(admin)_SUB-MODULE(personel)_MENU(Gestion promotion):
+  id: Long ID
+  reference: String REF_REQUIERED
+  indice: Integer
+  echelle: Echelle
+
+Grade_MS(ms1)_ROLES(admin)_SUB-MODULE(personel)_MENU(Gestion promotion):
+  id: Long ID
+  libelle: String LABEL_REQUIERED
+  code: String REF_REQUIERED
+
+#---------------- Notation -----------------
+
+Notation_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion NOtation):
+  id: Long ID
+  premierNote: BigDecimal
+  deusiemeNote: BigDecimal
+  troisiemeNote: BigDecimal
+  quatriemeNote: BigDecimal
+  cinquiemeNote: BigDecimal
+  sommeDesNotes: BigDecimal
+  commentaire: String
+    
+#---------------- Absence -----------------
+Absence_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion Absence):
+  id: Long ID 
+  nombreAbsence: Integer
+  dateAbsence: LocalDateTime
+  justification: String
+
+Conges_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion Absence):
+  id: Long ID
+  dateDebut: LocalDateTime
+  dateFin: LocalDateTime
+  jourRestantParAnnee: Integer
+  
+#---------------- Service -----------------
+
+Departement_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion service):
+  id: Long ID
+  nom: String
+  discription: String
+  postes: Poste List
+  employes: Employe List
+  employe: Employe
+
+Poste_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion tache):
+  id: Long ID
+  titre: String
+  discription: String
+  dateAffectation: LocalDateTime
+  departement: Departement
+
+Local_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion service):
+  id: Long ID
+  libelle: String
+  dateOccupationPoste: LocalDateTime
+
+ParcoursUniversitaire_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion service):
+  id: Long ID
+  deplome: String 
+  dateObtention: LocalDateTime
+
+#---------------- systeme -----------------
+Notification_MS(ms1)_ROLES(admin)_SUB-MODULE(personnel)_MENU(Gestion personnel):
+  id: Long ID
+  reference: String
+  dateNotification: LocalDateTime
+
+
+
+$CONFIG:
+  ms: "{name=ms1, packaging=myms1, url=http://localhost:8090/api/v1}"
+  currentMs: ms1
+
